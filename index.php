@@ -25,6 +25,8 @@ include_once "classes/db.class.php";
 
 //models
 include_once "api/clients/clients.php";
-include_once "api/booking/booking.php"
+include_once "api/booking/booking.php";
+include_once "api/hotelguest/hotelguest.php";
+include_once "api/room/room.php";
 
 ?>
