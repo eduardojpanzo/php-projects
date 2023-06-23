@@ -5,6 +5,7 @@ function noWayResponse() {
 }
 
 header("Access-Control-Allow-Origin:*"); // definir o cors, que pagina poderá cosumir nossa api, neste caso (*) todos
+header("Access-Control-Allow-Methods: *");
 header("Content-type: application/json"); // A api usará retorno de json, 
 
 date_default_timezone_set("america/Sao_Paulo"); //fuso horário

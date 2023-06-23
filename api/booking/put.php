@@ -22,8 +22,6 @@ if ($acao == "change" && $param != "") {
     }
     $sql .="WHERE id_booking = $param";
 
-    var_dump($sql);
-
     $db = DB::connect();
     $rs = $db->prepare($sql);
     $exec = $rs->execute();
