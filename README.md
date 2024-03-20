@@ -1,2 +1,2 @@
-# hotel-api
-manager hotel api
+# php-ptojects
+some academic projects I did in PHP
