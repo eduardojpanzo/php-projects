@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Campeonato</title>
+  <link rel="stylesheet" href="./assets/css/global.css" />
+</head>
+
+<body id="body-pd">
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header_toggle">
+      <i class="fas fa-bars" id="header-toggle"></i>
+    </div>
+    <div class="header_img">JP</div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="l-navbar" id="nav-bar">
+    <nav class="nav">
+      <div>
+        <a href="./index.html" class="nav_logo">
+          <i class="fas fa-chart-line nav_logo-icon"></i>
+          <span class="nav_logo-name">BBBootstrap</span>
+        </a>
+        <ul class="nav_list">
+          <li>
+            <a href="./campeonato.html" class="nav_link active">
+              <i class="fas fa-trophy nav_icon"></i>
+              <span class="nav_name">Campeonatos</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./equipa.html" class="nav_link">
+              <i class="fas fa-shield-alt nav_icon"></i>
+              <span class="nav_name">Equipas</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./inscricao.html" class="nav_link">
+              <i class="fas fa-money-check-alt nav_icon"></i>
+              <span class="nav_name">Inscrições</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./partida.html" class="nav_link">
+              <i class="fas fa-futbol nav_icon"></i>
+              <span class="nav_name">Partidas</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./jogador.html" class="nav_link">
+              <i class="fas fa-tshirt nav_icon"></i>
+              <span class="nav_name">Jogadores</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./tecnico.html" class="nav_link">
+              <i class="fas fa-user-tie nav_icon"></i>
+              <span class="nav_name">Técnico</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./responsavel.html" class="nav_link">
+              <i class="fas fa-user-tie nav_icon"></i>
+              <span class="nav_name">responsáveis</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./estadio.html" class="nav_link">
+              <i class="fas fa-map-pin nav_icon"></i>
+              <span class="nav_name">Estádios</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./usuario.html" class="nav_link">
+              <i class="fas fa-users-cog nav_icon"></i>
+              <span class="nav_name">Usuários</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a href="./logout.html" class="nav_link">
+        <i class="fas fa-sign-out-alt nav_icon"></i>
+        <span class="nav_name">Sair</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!--Container Main start-->
+  <main class="height-100 bg-light p-2 ">
+    <div class="d-flex  justify-content-between ">
+      <div>
+        <h4 class="fw-bold text-xxl-start">Campeonatos</h4>
+        <p>Parametrização dos compeonatos</p>
+      </div>
+
+      <button onclick="handleBuildModalForm('')" type="button"
+        class="btn btn-outline-primary align-self-center ">Novo</button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">data de inicio</th>
+          <th scope="col">data de fim</th>
+          <th scope="col">valor a pagar</th>
+          <th scope="col">descrição</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody class="view_tbody">
+      </tbody>
+    </table>
+
+
+    <div class="modal-overlay">
+      <div class="modal-close" onclick="closeModal()">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="modal-content"></div>
+    </div>
+
+  </main>
+  <!--Container Main end-->
+
+  <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/dist/js/jquery.min.js"></script>
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/campeonato.js"></script>
+</body>
+
+</html>
