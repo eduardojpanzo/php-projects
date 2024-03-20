@@ -1,0 +1,233 @@
+@import url("./global.css");
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-primary);
+  transition: var(--tran-03);
+  font-size: 1rem;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 16rem;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-third);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  overflow-y: auto;
+}
+.logo {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 5rem;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  color: var(--blue-200);
+  cursor: pointer;
+}
+
+.menu-items {
+  flex: 1;
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+}
+
+.menu-items .item,
+.switch-theme {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.62rem;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  font-weight: 400;
+  cursor: pointer;
+  transition: var(--tran-03);
+}
+.item i {
+  font-size: larger;
+}
+
+.menu-items .item:hover,
+.switch-theme:hover {
+  background: var(--bg-primary);
+  border: 1px solid var(--gray-300);
+}
+
+.switch-theme {
+  justify-content: space-between;
+}
+
+.switch-theme .sun,
+.dark .switch-theme .moon {
+  display: none;
+}
+.switch-theme .moon,
+.dark .switch-theme .sun {
+  display: inline;
+}
+
+/* MAIN CONTENT FILTER TABLE */
+
+.main-content {
+  position: relative;
+  flex: 1;
+  max-width: calc(100% - 16rem);
+  padding: 1.5rem;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--gray-300);
+  color: var(--gray-400);
+  font-weight: lighter;
+}
+.main-header .subtitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.main-header button {
+  background: var(--blue-600);
+  color: var(--gray-50);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.content {
+  max-width: 100%;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+}
+.dashboard {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.dashitem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 300px;
+  height: 250px;
+  padding: 2rem 0;
+  border-radius: 0.2rem;
+  box-shadow: inset 0 0 30px var(--gray-300);
+  background: var(--gray-50);
+  transition: var(--tran-03);
+  user-select: none;
+}
+.dashitem:hover {
+  transform: scale(0.95);
+}
+.dashitem h3 {
+  color: var(--gray-500);
+  font-size: 1.5rem;
+}
+.dashitem p {
+  font-size: 7rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--gray-700);
+  color: var(--gray-900);
+}
+
+table {
+  width: 100%;
+  min-width: 30rem;
+  border-spacing: 0 0.5rem;
+}
+thead th {
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: left;
+  padding-bottom: 1rem;
+}
+tbody tr:hover {
+  background: var(--bg-third);
+  cursor: pointer;
+}
+tbody td {
+  font-size: medium;
+  padding: 0.62rem;
+}
+tbody td:first-child {
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+tbody td:last-child {
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+}
+tbody td button {
+  color: var(--gray-50);
+  background: var(--red-500);
+  transition: var(--tran-03);
+  font-weight: bold;
+}
+tbody td button:hover {
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+.about .logo {
+  margin-bottom: 1rem;
+}
+.about p {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.about h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gray-500);
+}
+.about .authors {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+}
+.authors .author {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+}
+.author figure {
+  max-width: 180px;
+  max-height: 180px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.author figure img {
+  width: 100%;
+  object-fit: cover;
+}

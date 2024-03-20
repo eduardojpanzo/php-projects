@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta name="description" content="Hotel manager Sistem" />
+    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <link rel="icon" type="image/x-icon" href="./src/images/icon.png" />
+    <title>Novetel</title>
+  </head>
+  <body>
+    <main class="main">
+      <aside class="sidebar">
+        <h1 class="logo"><img src="./src/images/logo.png" /></h1>
+
+        <ul class="menu-items"></ul>
+
+        <div class="switch-theme" onclick="toggleTheme()"></div>
+      </aside>
+
+      <section class="main-content">
+        <div class="main-header"></div>
+
+        <div class="content"></div>
+      </section>
+
+      <div class="modal-overlay">
+        <div class="modal-close" onclick="closeModal()">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content"></div>
+      </div>
+    </main>
+
+    <script src="./src/js/service.js"></script>
+    <script src="./src/js/data.js"></script>
+    <script src="./src/js/main.js"></script>
+    <script src="./src/js/svg.js"></script>
+  </body>
+</html>
