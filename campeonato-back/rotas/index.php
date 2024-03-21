@@ -1,4 +1,4 @@
-<?php 
+<?php
 	if ($rota == "acesso") {
 		include_once "acesso/index.php";
 	} else if ($rota == "jogador") {

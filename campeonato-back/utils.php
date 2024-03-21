@@ -1,33 +1,11 @@
 <?php 
+$URL_SERVER_FILES = "http://localhost/php-projects/campeonato-back/uploads/";
 
 $responseData = [
     'data' => [],
     'code' => 404,
     'message' => 'notFout',
 ];
-
-
-function notFound($msg = "Rota não encotrado") {
-    return [
-        'code' => 404,
-        'message' => $msg,
-    ];
-}
-
-function Unauthorized($msg="Operação não autorizada") {
-    return [
-        'code' => 401,
-        'message' => $msg,
-    ];
-}
-
-function BadRequest() {
-    return [
-        'code' => 500,
-        'message' => 'Deu algum erro na requisição feita',
-    ];
-}
-
 
 function sucess($data, $msg = 'Success') {
    return [
@@ -43,6 +21,43 @@ function sucessOnlyMessage($msg="Executado com sucesso") {
          'message' => $msg,
      ];
 }
+
+function forbidden($msg="Operação é Proibida") {
+    return [
+        'code' => 401,
+        'message' => $msg,
+    ];
+}
+
+function Unauthorized($msg="Operação não é autorizada") {
+    return [
+        'code' => 401,
+        'message' => $msg,
+    ];
+}
+
+function notFound($msg = "Rota não encotrado") {
+    return [
+        'code' => 404,
+        'message' => $msg,
+    ];
+}
+
+
+function notAllowed($msg = "Operação não é permitido") {
+    return [
+        'code' => 405,
+        'message' => $msg,
+    ];
+}
+
+function BadRequest($msg = "Deu algum erro na requisição feita") {
+    return [
+        'code' => 500,
+        'message' => $msg,
+    ];
+}
+
 
 // ---------
 

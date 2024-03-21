@@ -1,4 +1,4 @@
-const API_BASE_PATH = "http://localhost/projects/campeonato-back";
+const API_BASE_PATH = "http://localhost/php-projects/campeonato-back";
 const modalOverlay = document.querySelector(".modal-overlay");
 
 document.addEventListener("keydown", (e) => {
