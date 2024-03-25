@@ -1,17 +1,12 @@
 <?php
 
 if ($param == "") {
-    $data = selectAllRow("SELECT * FROM `inscricao`");
+    $data = selectAllRow("SELECT i.*, e.nome AS nome_equipa, c.nome AS nome_campeonato FROM inscricao i JOIN equipa e ON i.id_equipa = e.id_equipa JOIN campeonato c ON i.id_campeonato = c.id_campeonato");
 
     $responseData = sucess($data, 'Executado com sucesso');
 } else if ($param != "") {
     //busca pelo paramentro id
-    $data = selectOneRow("SELECT * FROM `inscricao` WHERE id_inscricao = $param");
-
-    if (!$data) {
-        $responseData = notFound("Inscricão não encontrado");
-        return;
-    }
+    $data = selectAllRow("SELECT i.*, e.nome AS nome_equipa, c.nome AS nome_campeonato FROM inscricao i JOIN equipa e ON i.id_equipa = e.id_equipa JOIN campeonato c ON i.id_campeonato = c.id_campeonato WHERE i.id_campeonato = $param");
 
     $responseData = sucess($data, 'Executado com sucesso');
 }else {

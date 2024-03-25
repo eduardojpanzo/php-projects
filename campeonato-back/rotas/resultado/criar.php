@@ -6,6 +6,8 @@ $data = json_decode(trim(file_get_contents("php://input")));
 if ($param == "") {
     $sql_code = DataToSqlInsertInto($data, "resultados");
 
+    //setar aqui o estado da partida como terminada
+
     $db = DB::connect();
 
     $resp = $db->prepare($sql_code);

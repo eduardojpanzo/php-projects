@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin | Inscrições</title>
+  <title>Admin | Partidas</title>
   <link rel="stylesheet" href="./assets/css/global.css" />
 </head>
 
@@ -41,14 +41,14 @@
           </li>
 
           <li>
-            <a href="./inscricao.html" class="nav_link active">
+            <a href="./inscricao.html" class="nav_link">
               <i class="fas fa-money-check-alt nav_icon"></i>
               <span class="nav_name">Inscrições</span>
             </a>
           </li>
 
           <li>
-            <a href="./partida.html" class="nav_link">
+            <a href="./partida.html" class="nav_link active">
               <i class="fas fa-futbol nav_icon"></i>
               <span class="nav_name">Partidas</span>
             </a>
@@ -102,8 +102,8 @@
   <main class="height-100 bg-light p-2 ">
     <div class="d-flex  justify-content-between ">
       <div>
-        <h4 class="fw-bold text-xxl-start">Inscrição</h4>
-        <p>Aprovação de Inscrição</p>
+        <h4 class="fw-bold text-xxl-start">Partidas</h4>
+        <p>Criação e conclusão de partidas</p>
       </div>
 
       <button onclick="handleBuildModalForm('')" type="button"
@@ -111,13 +111,18 @@
     </div>
     <div class="filter-section">
     </div>
-    <table class="table">
+    <table class="table overflow-auto">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">campeonato</th>
-          <th scope="col">Esquipa</th>
-          <th scope="col">Pagamento</th>
+          <th scope="col">Esquipa de Casa</th>
+          <th scope="col">Esquipa de Fora</th>
+          <th scope="col">Hora ínicio</th>
+          <th scope="col">Hora fim</th>
+          <th scope="col">Estado do jogo</th>
+          <th scope="col">Golo de Casa</th>
+          <th scope="col">Golo de Fora</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -140,7 +145,7 @@
   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/dist/js/jquery.min.js"></script>
   <script src="./assets/js/main.js"></script>
-  <script src="./assets/js/inscricao.js"></script>
+  <script src="./assets/js/partida.js"></script>
 </body>
 
 </html>

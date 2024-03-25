@@ -1,21 +1,26 @@
-initialInscricaoView()
+initialPartidasView()
 // Estudar essa possibilidade de apenas aprovar no dashbord e ser criado no site principal
-
-async function initialInscricaoView() {
-    const inscricoes = await getManyField("inscricao");
+// id_partida	data	hora_fim	hora_inicio	estado	id_campeonato	id_equipa_casa	id_equipa_fora	nome_campeonato	equipa_casa	equipa_fora	gol_casa	gol_fora
+async function initialPartidasView() {
+    const partidas = await getManyField("partidas");
     const campeonatos = await getManyField("campeonato");
 
-    inscricoes.map(
-        ({ id_inscricao, nome_campeonato, nome_equipa, estado }, i) => {
+    partidas.map(
+        ({ id_partida, nome_campeonato, equipa_casa, equipa_fora, hora_fim, hora_inicio, estado, gol_casa, gol_fora }, i) => {
             document.querySelector(".view_tbody").innerHTML += `
-            <tr data-key="${id_inscricao}">
+            <tr data-key="${id_partida}">
                 <th scope="row">${i + 1}</th>
                 <td>${nome_campeonato}</td>
-                <td>${nome_equipa}</td>
-                <td>${estado == 1 ? 'Aprovado' : 'Não aprovado'}</td>
+                <td>${equipa_casa}</td>
+                <td>${equipa_fora}</td>
+                <td>${hora_inicio}</td>
+                <td>${hora_fim}</td>
+                <td>${estado == 1 ? 'Terminado' : 'Sem resultado'}</td>
+                <td>${gol_casa}</td>
+                <td>${gol_fora}</td>
                 <td class='d-flex gap-2'>
-                   ${estado == 0 ? `<button class="btn btn-warning btn-sm" onclick="handleApprove(${id_inscricao})">Aprovar</button>` : ''}
-                    <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_inscricao})">Remover</button>
+                   ${estado == 0 ? `<button class="btn btn-success btn-sm" onclick="handleApprove(${id_partida})">Concluir a Partida</button>` : ''}
+                    <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_partida})">Remover</button>
                 </td>
             </tr>
         `;
@@ -58,16 +63,16 @@ async function handleFilterByCampeonato(event) {
         document.querySelector(".view_tbody").innerHTML = "";
 
         inscricoes.map(
-            ({ id_inscricao, nome_campeonato, nome_equipa, estado }, i) => {
+            ({ id_partida, nome_campeonato, nome_equipa, estado }, i) => {
                 document.querySelector(".view_tbody").innerHTML += `
-                <tr data-key="${id_inscricao}">
+                <tr data-key="${id_partida}">
                     <th scope="row">${i + 1}</th>
                     <td>${nome_campeonato}</td>
                     <td>${nome_equipa}</td>
                     <td>${estado == 1 ? 'Aprovado' : 'Não aprovado'}</td>
                     <td class='d-flex gap-2'>
-                       ${estado == 0 ? `<button class="btn btn-warning btn-sm" onclick="handleApprove(${id_inscricao})">Aprovar</button>` : ''}
-                        <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_inscricao})">Remover</button>
+                       ${estado == 0 ? `<button class="btn btn-warning btn-sm" onclick="handleApprove(${id_partida})">Aprovar</button>` : ''}
+                        <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_partida})">Remover</button>
                     </td>
                 </tr>
             `;

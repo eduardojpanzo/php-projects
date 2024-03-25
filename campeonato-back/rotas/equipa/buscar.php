@@ -1,29 +1,32 @@
 <?php
+$URL_SERVER_FILES .= "equipa/";
 
 if ($param == "") {
-    $data = selectAllRow("SELECT * FROM `equipa`");
+    $data = selectAllRow("SELECT e.*, CONCAT('$URL_SERVER_FILES', f.nome_arquivo) AS url_foto FROM `equipa` e LEFT JOIN fotos f ON e.id_foto = f.id_foto");
 
     $responseData = sucess($data, 'Executado com sucesso');
 } else if ($param != "") {
+      //busca pelo paramentro id
+    $equipa = selectOneRowLikeArray("SELECT e.*, CONCAT('$URL_SERVER_FILES', f.nome_arquivo) AS url_foto FROM `equipa` e LEFT JOIN fotos f ON e.id_foto = f.id_foto WHERE e.id_equipa = $param");
 
-    // $equipas = selectOneRowLikeArray("SELECT c.*, CONCAT('$URL_SERVER_FILES', f.nome_arquivo) AS url_foto FROM `campeonato` c LEFT JOIN fotos f ON c.id_foto = f.id_foto WHERE c.id_campeonato = $param");
+    $jogadores = selectAllRow("SELECT j.*, CONCAT ('$URL_SERVER_FILES',f.nome_arquivo) AS url_foto FROM jogador j LEFT JOIN fotos f ON j.id_foto = f.id_foto WHERE j.id_equipa = $param");
 
-    // $jogadores = selectAllRow("SELECT e.*, CONCAT ('$URL_SERVER_FILES',f.nome_arquivo) AS url_foto FROM inscricao i JOIN equipa e ON i.id_equipa = e.id_equipa LEFT JOIN fotos f ON e.id_foto = f.id_foto WHERE i.estado = true AND i.id_campeonato = $param");
+    if (!$equipa) {
+        $responseData = notFound("Equipa não encontrado");
+        return;
+    }
 
-    // $data = [
-    //     'id_campeonato' => $campeonato['id_campeonato'],
-    //     'nome_campeonato' => $campeonato['nome'],
-    //     'data_inicio' => $campeonato['data_inicio'],
-    //     'data_fim' => $campeonato['data_fim'],
-    //     'descricao_campeonato' => $campeonato['descricao'],
-    //     'valor_pagar' => $campeonato['valor_pagar'],
-    //     'id_foto_campeonato' => $campeonato['id_foto'],
-    //     'url_foto'=>$campeonato['url_foto'],
-    //     'equipas' => $equipas
-    // ];
-
-    //busca pelo paramentro id
-    $data = selectOneRow("SELECT * FROM `equipa` WHERE id_equipa = $param");
+    $data = [
+        'id_equipa' => $equipa['id_equipa'],
+        'nome' => $equipa['nome'],
+        'descricao' => $equipa['descricao'],
+        'data_fundacao' => $equipa['data_fundacao'],
+        'id_foto' => $equipa['id_foto'],
+        'id_responsavel' => $equipa['id_responsavel'],
+        'id_estadio' => $equipa['id_estadio'],
+        'url_foto'=>$equipa['url_foto'],
+        'jogadores' => $jogadores
+    ];
 
     if (!$data) {
         $responseData = notFound("Equipa não encontrado");
