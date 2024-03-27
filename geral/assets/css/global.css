@@ -1,0 +1,153 @@
+@import url("../dist/css/bootstrap.min.css");
+@import url("../dist/css/all.css");
+
+@font-face {
+  font-family: Nunito;
+  src: url("../fonts/Nunito-Regular.ttf");
+}
+
+:root {
+  --header-height: 3rem;
+  --nav-width: 68px;
+  --first-color: #4723d9;
+  --first-color-light: #afa5d9;
+  --white-color: #f7f6fb;
+  --body-font: "Nunito", sans-serif;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
+  --font-family: "Roboto", "Poppins", sans-serif;
+
+  --text-primary: #121418;
+  --text-secondary: #3d3e42;
+  --bg: #c0c0c0;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f0f0;
+  --bg-third: #e2e2e2;
+  --bg-trasparent: rgba(255, 255, 255, 0.78);
+  --transparent: rgba(0, 0, 0, 0.2);
+
+  /* DON't Change! */
+  --shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+
+  --white: #fff;
+
+  --blue-200: #26a8fe;
+  --blue-500: #5274f9;
+  --blue-600: #0202f5;
+  --blue-hover: #323048;
+  --blueviolet-500: blueviolet;
+
+  --green-300: #45cdbf;
+  --green-500: #2da30f;
+
+  --yellow: #efc076;
+  --yellow-300: #efc076;
+  --yellow-400: #f0bb00;
+  --yellow-500: #ffff00;
+
+  --orange-500: #ff9100;
+
+  --red-50: #f5eaea;
+  --red-500: #eb6666;
+  --red-600: #ef6081;
+
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  transition: 0.5s;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-trasparent);
+  z-index: 99;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-overlay .modal-close {
+  height: 2.375rem;
+  width: 2.375rem;
+  padding: 0.6rem;
+  margin: 2rem auto;
+  border-radius: 100px;
+  box-shadow: var(--shadow);
+  background: transparent;
+  font-size: 1.25rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-overlay .modal-content {
+  max-width: 100%;
+  max-width: 640px;
+  width: max-content;
+  height: max-content;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid var(--gray-100);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  background: var(--bg-primary);
+  transition: var(--tran-05);
+  overflow: hidden;
+}
+
+.carousel {
+  margin-bottom: 4rem;
+}
+
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+.carousel-item {
+  height: 32rem;
+}
+
+.carousel-item>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
