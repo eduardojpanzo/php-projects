@@ -87,7 +87,10 @@ a {
   text-decoration: none;
 }
 
-
+a.link-card {
+  position: absolute;
+  inset: 0;
+}
 
 .modal-overlay {
   position: absolute;
