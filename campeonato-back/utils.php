@@ -4,7 +4,7 @@ $URL_SERVER_FILES = "http://localhost/php-projects/campeonato-back/uploads/";
 $responseData = [
     'data' => [],
     'code' => 404,
-    'message' => 'notFout',
+    'message' => 'Rota não encotrado',
 ];
 
 function sucess($data, $msg = 'Success') {

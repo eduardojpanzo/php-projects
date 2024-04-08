@@ -1,99 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Equipa</title>
     <link rel="stylesheet" href="./assets/css/global.css" />
     <style>
-        .main_container {
-            min-height: 80dvh;
-        }
+      .main_container {
+        min-height: 80dvh;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Menu de Navegação -->
     <header class="p-3 bg-dark text-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="./index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    LOGO
-                </a>
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <a
+            href="./index.html"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+          >
+            LOGO
+          </a>
 
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="./index.html" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="./lista.html?field=campeonato" class="nav-link px-2 text-white">Campeonatos</a></li>
-                    <li><a href="./lista.html?field=equipa" class="nav-link px-2 text-white">Equipas</a></li>
-                    <li><a href="./lista.html?field=estadio" class="nav-link px-2 text-white">Estadios</a></li>
-                </ul>
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li>
+              <a href="./index.html" class="nav-link px-2 text-secondary"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="./lista.html?field=campeonato"
+                class="nav-link px-2 text-white"
+                >Campeonatos</a
+              >
+            </li>
+            <li>
+              <a
+                href="./lista.html?field=equipa"
+                class="nav-link px-2 text-white"
+                >Equipas</a
+              >
+            </li>
+            <li>
+              <a
+                href="./lista.html?field=estadio"
+                class="nav-link px-2 text-white"
+                >Estadios</a
+              >
+            </li>
+          </ul>
 
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <button type="button" class="btn btn-warning">Sign-up</button>
-                </div>
-            </div>
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">
+              Login
+            </button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
         </div>
+      </div>
     </header>
 
     <main class="main_container container">
-        <div class="card card-principal">
-            <div class="card_image">
+      <div class="card card-principal">
+        <div class="card_image"></div>
+
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+
+          <section class="container mt-4 my-4 p-4 bg-light">
+            <h4 id="jogador">Jogadores</h4>
+            <div class="row jogador-row">
+              <!-- Adicione os cards conforme necessário -->
             </div>
+          </section>
 
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"></p>
-
-
-                <section class="container mt-4 my-4 p-4 bg-light">
-                    <h4 id="jogador">Jogadores</h4>
-                    <div class="row jogador-row">
-                        <!-- Adicione os cards conforme necessário -->
-                    </div>
-                </section>
-
-                <section class="container mt-4 my-4 p-4 bg-light">
-                    <h4 id="partida">Partidas</h4>
-                    <div class="row partida-row">
-                        <!-- Adicione os cards conforme necessário -->
-                    </div>
-                </section>
-
-                <section class="container mt-4 my-4 p-4 bg-light">
-                    <h4 id="estadio">Estádio</h4>
-                    <div class="row estadio-row">
-                        <!-- Adicione os cards conforme necessário -->
-                    </div>
-                </section>
+          <section class="container mt-4 my-4 p-4 bg-light">
+            <h4 id="partida">Partidas</h4>
+            <div class="row partida-row">
+              <!-- Adicione os cards conforme necessário -->
             </div>
+          </section>
+
+          <section class="container mt-4 my-4 p-4 bg-light">
+            <h4 id="estadio">Estádio</h4>
+            <div class="row estadio-row">
+              <!-- Adicione os cards conforme necessário -->
+            </div>
+          </section>
         </div>
+      </div>
     </main>
-
 
     <!-- Footer Elaborado -->
     <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>© 2024 Minha Página. Todos os direitos reservados.</p>
-                </div>
-                <div class="col-md-6">
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#">Política de Privacidade</a></li>
-                        <li class="list-inline-item"><a href="#">Termos de Uso</a></li>
-                        <li class="list-inline-item"><a href="#">Contato</a></li>
-                    </ul>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>© 2024 Minha Página. Todos os direitos reservados.</p>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Política de Privacidade</a>
+              </li>
+              <li class="list-inline-item"><a href="#">Termos de Uso</a></li>
+              <li class="list-inline-item"><a href="#">Contato</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/dist/js/jquery.min.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/equipa.js"></script>
-</body>
-
+  </body>
 </html>
