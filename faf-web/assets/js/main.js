@@ -1,4 +1,4 @@
-const API_BASE_PATH = "http://localhost/php-projects/campeonato-back";
+const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 let USER_DATA = undefined;
 
 checkIsUserAuth();

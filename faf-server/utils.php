@@ -1,5 +1,5 @@
 <?php 
-$URL_SERVER_FILES = "http://localhost/php-projects/campeonato-back/uploads/";
+$URL_SERVER_FILES = "http://localhost/php-projects/faf-server/uploads/";
 
 $responseData = [
     'data' => [],
