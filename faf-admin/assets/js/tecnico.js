@@ -20,7 +20,7 @@ async function initialTecnicoView() {
                     )})">Editar</button>
                     <button class="btn btn-secondary  btn-sm" onclick="handleBuildModalFormUpload(${Number(
                       id_tecnico
-                    )})"> Foto </button>;
+                    )})"> Foto </button>
                     <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_tecnico})">Remover</button>
                 </td>
             </tr>

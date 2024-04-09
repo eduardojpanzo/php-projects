@@ -114,7 +114,7 @@ async function postNewField(field, dataBody) {
 }
 
 async function login(dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/acesso/entrar`, {
+  const response = await fetch(`${API_BASE_PATH}/usuario/entrar`, {
     method: "POST",
     body: JSON.stringify(dataBody),
   });

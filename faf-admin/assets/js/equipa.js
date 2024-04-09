@@ -17,7 +17,7 @@ async function initialEquipaView() {
                     )})">Editar</button>
                     <button class="btn btn-secondary  btn-sm" onclick="handleBuildModalFormUpload(${Number(
                       id_equipa
-                    )})"> Foto </button>;
+                    )})"> Foto </button>
                     <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_equipa})">Remover</button>
                 </td>
             </tr>

@@ -16,7 +16,7 @@ async function initialUsuarioView() {
                     )})">Editar</button>
                     <button class="btn btn-secondary  btn-sm" onclick="handleBuildModalFormUpload(${Number(
                       id_usuario
-                    )})"> Foto </button>;
+                    )})"> Foto </button>
                     <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_usuario})">Remover</button>
                 </td>
             </tr>
@@ -134,14 +134,13 @@ async function handlecriarItem(form) {
   window.location.reload();
 }
 
+// ao criar usuarrio deve usar a rota de cadastro que cotem hash
 async function handleEditItem(form, id) {
   const usuarioData = {
     nome: form.nome.value,
     tipo: form.tipo.value,
     senha: form.senha.value,
   };
-
-  console.log(usuarioData, id);
 
   await updateField("usuario", id, usuarioData);
   window.location.reload();

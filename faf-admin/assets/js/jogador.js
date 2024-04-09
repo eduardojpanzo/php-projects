@@ -20,7 +20,7 @@ async function initialJogadorView() {
                     )})">Editar</button>
                     <button class="btn btn-secondary  btn-sm" onclick="handleBuildModalFormUploa(${Number(
                       id_jogador
-                    )})"> Foto </button>;
+                    )})"> Foto </button>
                     <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_jogador})">Remover</button>
                 </td>
             </tr>

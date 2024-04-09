@@ -17,7 +17,7 @@ async function initialEstadioView() {
                     )})">Editar</button>
                     <button class="btn btn-secondary  btn-sm" onclick="handleBuildModalFormUpload(${Number(
                       id_estadio
-                    )})"> Foto </button>;
+                    )})"> Foto </button>
                     <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_estadio})">Remover</button>
                 </td>
             </tr>

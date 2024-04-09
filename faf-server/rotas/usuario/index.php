@@ -1,6 +1,8 @@
 <?php
  	if ($method == "POST" && $acao == "criar") {
         include_once "criar.php";
+    }if ($method == "POST" && $acao == "entrar") {
+        include_once "entrar.php";
     }else if ($method == "GET" && $acao == "buscar") {
         include_once "buscar.php";
     }else if ($method == "PUT" && $acao == "atualizar") {
