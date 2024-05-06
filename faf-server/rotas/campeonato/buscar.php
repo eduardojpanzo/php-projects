@@ -1,4 +1,5 @@
 <?php
+$URL_SERVER_FILES_EQUIPA = $URL_SERVER_FILES . "equipa/";
 $URL_SERVER_FILES .= "campeonato/";
 
 if ($param == "") {
@@ -15,7 +16,7 @@ if ($param == "") {
         return;
     }
 
-    $equipas = selectAllRow("SELECT e.*, CONCAT ('$URL_SERVER_FILES',f.nome_arquivo) AS url_foto FROM inscricao i JOIN equipa e ON i.id_equipa = e.id_equipa LEFT JOIN fotos f ON e.id_foto = f.id_foto WHERE i.estado = true AND i.id_campeonato = $param");
+    $equipas = selectAllRow("SELECT e.*, CONCAT ('$URL_SERVER_FILES_EQUIPA',f.nome_arquivo) AS url_foto FROM inscricao i JOIN equipa e ON i.id_equipa = e.id_equipa LEFT JOIN fotos f ON e.id_foto = f.id_foto WHERE i.estado = true AND i.id_campeonato = $param");
 
     $data = [
         'id_campeonato' => $campeonato['id_campeonato'],

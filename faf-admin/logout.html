@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./assets/js/main.js" async></script>
+    <title>Sair...</title>
+</head>
+
+<body>
+
+    <script>
+        logout()
+
+        function logout() {
+            USER_DATA = undefined;
+            removeCookie("AdminUserAuth");
+        }
+        function removeCookie(name) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+        document.location.href = "./login.html";
+    </script>
+</body>
+
+</html>

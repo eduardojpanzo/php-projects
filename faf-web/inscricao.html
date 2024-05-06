@@ -1,97 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jogador</title>
-    <script src="./assets/js/main.js" async></script>
-    <link rel="stylesheet" href="./assets/css/global.css" />
-    <style>
-      .main_container {
-        min-height: 80dvh;
-      }
-    </style>
-  </head>
 
-  <body>
-    <!-- Menu de Navegação -->
-    <header class="p-3 bg-dark text-white">
-      <div class="container">
-        <div
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-        >
-          <a
-            href="./index.html"
-            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-          >
-            LOGO
-          </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogador</title>
+  <script src="./assets/js/main.js" async></script>
+  <link rel="stylesheet" href="./assets/css/global.css" />
+  <style>
+    .main_container {
+      min-height: 80dvh;
+    }
+  </style>
+</head>
 
-          <ul
-            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-          >
-            <li>
-              <a href="./index.html" class="nav-link px-2 text-secondary"
-                >Home</a
-              >
+<body>
+  <!-- Menu de Navegação -->
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="./index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          LOGO
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="./index.html" class="nav-link px-2 text-secondary">Home</a>
+          </li>
+          <li>
+            <a href="./lista.html?field=campeonato" class="nav-link px-2 text-white">Campeonatos</a>
+          </li>
+          <li>
+            <a href="./lista.html?field=equipa" class="nav-link px-2 text-white">Equipas</a>
+          </li>
+          <li>
+            <a href="./lista.html?field=estadio" class="nav-link px-2 text-white">Estadios</a>
+          </li>
+        </ul>
+
+        <div class="text-end user-info">
+          <button type="button" class="btn btn-outline-light me-2">
+            Login
+          </button>
+          <button type="button" class="btn btn-warning">Sign-up</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main_container container"></main>
+
+  <!-- Footer Elaborado -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>© 2024 Minha Página. Todos os direitos reservados.</p>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#">Política de Privacidade</a>
             </li>
-            <li>
-              <a
-                href="./lista.html?field=campeonato"
-                class="nav-link px-2 text-white"
-                >Campeonatos</a
-              >
-            </li>
-            <li>
-              <a
-                href="./lista.html?field=equipa"
-                class="nav-link px-2 text-white"
-                >Equipas</a
-              >
-            </li>
-            <li>
-              <a
-                href="./lista.html?field=estadio"
-                class="nav-link px-2 text-white"
-                >Estadios</a
-              >
-            </li>
+            <li class="list-inline-item"><a href="#">Termos de Uso</a></li>
+            <li class="list-inline-item"><a href="#">Contato</a></li>
           </ul>
-
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">
-              Login
-            </button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
-          </div>
         </div>
       </div>
-    </header>
+    </div>
+  </footer>
 
-    <main class="main_container container"></main>
+  <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/dist/js/jquery.min.js"></script>
+  <script src="./assets/js/inscricao.js"></script>
+</body>
 
-    <!-- Footer Elaborado -->
-    <footer class="bg-dark text-white text-center py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p>© 2024 Minha Página. Todos os direitos reservados.</p>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">Política de Privacidade</a>
-              </li>
-              <li class="list-inline-item"><a href="#">Termos de Uso</a></li>
-              <li class="list-inline-item"><a href="#">Contato</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/dist/js/jquery.min.js"></script>
-    <script src="./assets/js/inscricao.js"></script>
-  </body>
 </html>

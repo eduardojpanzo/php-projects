@@ -2,6 +2,7 @@ const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 let USER_DATA = undefined;
 
 checkIsUserAuth();
+userInfomation()
 
 const modalOverlay = document.querySelector(".modal-overlay");
 
@@ -10,12 +11,35 @@ role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid sli
 <title>Placeholder</title>
 <rect width="100%" height="100%" fill="#868e96" />
 </svg>`;
+const IMAGE_COVER_CIRC = `<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>`
 
 document.addEventListener("keydown", (e) => {
   if (e.code === "Escape" && isModalOpen()) {
     closeModal();
   }
 });
+
+function userInfomation() {
+
+  if (!document.querySelector("header .user-info")) {
+    return
+  }
+
+  if (USER_DATA?.url_foto) {
+    document.querySelector("header .user-info").innerHTML = `
+    <div class="header_img">
+      <img src="${USER_DATA.url_foto}" alt="${USER_DATA.nome}" />
+    </div>
+    `
+    return;
+  }
+
+  document.querySelector("header .user-info").innerHTML = `
+  <div class="header_img">
+    ${USER_DATA?.nome.split(" ").map(item => item[0]).join("").toUpperCase()}
+  </div>
+  `
+}
 
 async function getManyField(field) {
   const response = await fetch(`${API_BASE_PATH}/${field}/buscar`);
@@ -34,6 +58,17 @@ async function getOneField(field, id) {
 
   if (!data) {
     return {};
+  }
+
+  return data.data;
+}
+
+async function getManyFieldByParamAndID(field, param, id) {
+  const response = await fetch(`${API_BASE_PATH}/${field}/${param}/${id}`);
+  const data = await response.json();
+
+  if (!data) {
+    return [];
   }
 
   return data.data;
@@ -137,7 +172,7 @@ function isModalOpen() {
 }
 
 function checkIsUserAuth() {
-  const isAuth = getCookie("AdminUserAuth");
+  const isAuth = getCookie("WebUserAuth");
 
   if (
     !isAuth &&
@@ -152,7 +187,7 @@ function checkIsUserAuth() {
 }
 
 async function login(dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/acesso/entrar`, {
+  const response = await fetch(`${API_BASE_PATH}/usuario/entrar`, {
     method: "POST",
     body: JSON.stringify(dataBody),
   });
@@ -165,7 +200,7 @@ async function login(dataBody) {
   alert(data.message ?? "Login feito!");
 
   USER_DATA = data.data;
-  setCookie("AdminUserAuth", JSON.stringify(USER_DATA), 3);
+  setCookie("WebUserAuth", JSON.stringify(USER_DATA), 3);
 
   return USER_DATA;
 }
@@ -196,7 +231,7 @@ function getCookie(name) {
 }
 
 function getUserData() {
-  var userDataCookie = getCookie("AdminUserAuth");
+  var userDataCookie = getCookie("WebUserAuth");
   if (userDataCookie) {
     return JSON.parse(userDataCookie);
   } else {

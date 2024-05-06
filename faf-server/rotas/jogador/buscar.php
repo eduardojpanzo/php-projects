@@ -1,7 +1,7 @@
 <?php
     $URL_SERVER_FILES .= "jogador/";
 if ($param == "") {
-    $data = selectAllRow("SELECT j.*, CONCAT('$URL_SERVER_FILES', f.nome_arquivo) AS url_foto FROM `jogador` j LEFT JOIN fotos f ON j.id_foto = f.id_foto");
+    $data = selectAllRow("SELECT j.* , eq.`nome` AS equipa_nome, CONCAT('$URL_SERVER_FILES', f.nome_arquivo) AS url_foto FROM `jogador` j LEFT JOIN `equipa` eq ON j.id_equipa = eq.id_equipa LEFT JOIN fotos f ON j.id_foto = f.id_foto");
 
     $responseData = sucess($data, 'Executado com sucesso');
 } else if ($param != "") {

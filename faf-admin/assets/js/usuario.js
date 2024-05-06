@@ -12,11 +12,11 @@ async function initialUsuarioView() {
                 <td class='d-flex gap-2'>
                     <button class="btn btn-info btn-sm" onclick="handleDetails(${id_usuario})">Detalhes</button>
                     <button class="btn btn-primary btn-sm" onclick="handleBuildModalForm(${Number(
-                      id_usuario
-                    )})">Editar</button>
+      id_usuario
+    )})">Editar</button>
                     <button class="btn btn-secondary  btn-sm" onclick="handleBuildModalFormUpload(${Number(
-                      id_usuario
-                    )})"> Foto </button>
+      id_usuario
+    )})"> Foto </button>
                     <button class="btn btn-danger btn-sm" onclick="handleDeleteItem(${id_usuario})">Remover</button>
                 </td>
             </tr>
@@ -29,8 +29,7 @@ async function handleDetails(id) {
 
   modalOverlay.querySelector(".modal-content").innerHTML = `
     <div class="card">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-
+        ${item.url_foto ? `<img src="${item.url_foto}" class="card-img-top" alt="${item.nome}"/>` : IMAGE_COVER}
         <div class="card-body">
             <h5 class="card-title">Nome: ${item.nome}</h5>
             <p class="card-text">Tipo: ${formatUser(item.tipo)}</p>
@@ -51,9 +50,8 @@ async function handleBuildModalForm(id) {
         ${id && `<input type='hidden' id='id' name='id' value='${id}'>`}
         <div class="col-md-6">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="${
-              item?.nome ?? ""
-            }" required>
+            <input type="text" class="form-control" id="nome" name="nome" value="${item?.nome ?? ""
+    }" required>
             <span class="invalid-feedback">Por favor, insira o nome.</span>
         </div>
 
@@ -81,9 +79,8 @@ async function handleBuildModalForm(id) {
 
         
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">${
-              id ? "Atualizar" : "Criar"
-            }</button>
+            <button type="submit" class="btn btn-primary">${id ? "Atualizar" : "Criar"
+    }</button>
         </div>
     </form>`;
 

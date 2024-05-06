@@ -2,6 +2,12 @@ const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 const modalOverlay = document.querySelector(".modal-overlay");
 let USER_DATA = undefined;
 
+const IMAGE_COVER = `<svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg"
+role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+<title>Placeholder</title>
+<rect width="100%" height="100%" fill="#868e96" />
+</svg>`;
+
 checkIsUserAuth();
 
 document.addEventListener("keydown", (e) => {
@@ -30,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         headerpd.classList.toggle("body-pd");
       });
     }
+
+    userInfomation()
   };
 
   showNavbar("header-toggle", "nav-bar", "body-pd", "header");
@@ -74,6 +82,22 @@ function isAdmin(tipo) {
   }
 }
 
+function userInfomation() {
+
+  if (!document.querySelector(".header .header_img")) {
+    return
+  }
+
+  if (USER_DATA?.url_foto) {
+    document.querySelector(".header .header_img").innerHTML = `
+    <img src="${USER_DATA.url_foto}" alt="${USER_DATA.nome}" />
+    `
+    return;
+  }
+
+  document.querySelector(".header .header_img").innerHTML = USER_DATA?.nome.split(" ").map(item => item[0]).join("").toUpperCase()
+}
+
 async function getManyField(field) {
   const response = await fetch(`${API_BASE_PATH}/${field}/buscar`);
   const data = await response.json();
@@ -86,31 +110,39 @@ async function getManyField(field) {
 }
 
 async function getOneField(field, id) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/buscar/${id}`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/buscar/${id}`);
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    return data.data;
+  } catch (error) {
+    alert("algo deu errado, verifique a conexao!")
   }
-
-  return data.data;
 }
 
 async function postNewField(field, dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/criar`, {
-    method: "POST",
-    body: JSON.stringify(dataBody),
-  });
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/criar`, {
+      method: "POST",
+      body: JSON.stringify(dataBody),
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    alert("criado com sucesso");
+    return data;
+  } catch (error) {
+    alert(error)
+    alert("Verifice os dados algo deu errado")
   }
-
-  alert(data.message ?? "criado com sucesso");
-
-  return data;
 }
 
 async function login(dataBody) {

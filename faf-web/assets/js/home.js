@@ -31,7 +31,7 @@ async function initialHomePage() {
             document.querySelector(".row.equipa-row").innerHTML += `
               <div class="col-md-4 my-2 position-relative ">
                   <div class="card">
-                      ${url_foto ? `<img src="${url_foto}" class="card-img-top" alt="${nome}"/>` : IMAGE_COVER}
+                      ${url_foto ? `<img src=${url_foto ? url_foto : "https://via.placeholder.com/150"} class="card-img-top" alt="${nome}"/>` : IMAGE_COVER}
                       <div class="card-body">
                           <h5 class="card-title">${nome}</h5>
                           <p class="card-text">${descricao}</p>

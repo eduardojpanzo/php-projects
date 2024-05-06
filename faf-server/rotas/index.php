@@ -1,7 +1,5 @@
 <?php
-	if ($rota == "acesso") {
-		include_once "acesso/index.php";
-	} else if ($rota == "jogador") {
+	if ($rota == "jogador") {
 		include_once "jogador/index.php";
 	}else if ($rota == "campeonato") {
 		include_once "campeonato/index.php";

@@ -138,4 +138,11 @@ function selectAllRow($sql){
     return $data;
 }
 
+function executeSql($sql){
+    $db = DB::connect();
+    $resp = $db->prepare($sql);
+    $result = $resp->execute();
+
+    return $result;
+}
  ?>

@@ -2,9 +2,9 @@ const url = location.href;
 const indexOfId = url.indexOf("id=");
 const idValue = url.substring(indexOfId + 3);
 
-initialJogadorView()
+initialListaView()
 
-async function initialJogadorView() {
+async function initialListaView() {
     const jogador = await getOneField("jogador", idValue);
     const equipa = await getOneField("equipa", jogador.id_equipa);
 

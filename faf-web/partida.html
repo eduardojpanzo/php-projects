@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Jogo</title>
+    <link rel="stylesheet" href="./assets/css/global.css" />
+    <style>
+        .card {
+            margin: 20px;
+        }
+
+        .team-logo {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menu de Navegação -->
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="./index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    LOGO
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="./index.html" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="./lista.html?field=campeonato" class="nav-link px-2 text-white">Campeonatos</a></li>
+                    <li><a href="./lista.html?field=equipa" class="nav-link px-2 text-white">Equipas</a></li>
+                    <li><a href="./lista.html?field=estadio" class="nav-link px-2 text-white">Estadios</a></li>
+                </ul>
+
+                <div class="text-end user-info">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Manchester City</h5>
+                        <img class="team-logo" src="https://via.placeholder.com/150" alt="Manchester City Logo">
+                        <p class="card-text">Gols: 3</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Wolverhampton</h5>
+                        <img class="team-logo" src="https://via.placeholder.com/150" alt="Wolverhampton Logo">
+                        <p class="card-text">Gols: 1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Data do Jogo</h5>
+                        <p class="card-text">Sábado, 4 de Maio de 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/dist/js/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/partida.js"></script>
+</body>
+
+</html>

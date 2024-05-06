@@ -7,6 +7,7 @@
   <title>Admin | Dashboard</title>
   <script src="./assets/js/main.js" async></script>
   <link rel="stylesheet" href="./assets/css/global.css" />
+  <link rel="stylesheet" href="./assets/css/dash.css">
 </head>
 
 <body id="body-pd">
@@ -102,12 +103,22 @@
 
   <!--Container Main start-->
   <main class="height-100 bg-light">
-    <h4>Main</h4>
+    <div class="welcome-admin-dash">
+      <h1>Seja bem vindo a plataforma!</h1>
+      [aqui vem uma imagem de boas vinda]
+    </div>
+
+    <div class="px-4 py-5">
+      <h2 class="pb-2 border-bottom">Informações Cadastradas</h2>
+      <div id="cadastrados" class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      </div>
+    </div>
   </main>
   <!--Container Main end-->
 
   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/dist/js/jquery.min.js"></script>
+  <script src="./assets/js/dash.js"></script>
 </body>
 
 </html>
