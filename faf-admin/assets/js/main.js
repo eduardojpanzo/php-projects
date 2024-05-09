@@ -1,4 +1,5 @@
-const API_BASE_PATH = "http://localhost/php-projects/faf-server";
+const API_BASE_PATH = "https://fluky-additives.000webhostapp.com";
+// const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 const modalOverlay = document.querySelector(".modal-overlay");
 let USER_DATA = undefined;
 
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
 
-    userInfomation()
+    userInfomation();
   };
 
   showNavbar("header-toggle", "nav-bar", "body-pd", "header");
@@ -83,19 +84,22 @@ function isAdmin(tipo) {
 }
 
 function userInfomation() {
-
   if (!document.querySelector(".header .header_img")) {
-    return
+    return;
   }
 
   if (USER_DATA?.url_foto) {
     document.querySelector(".header .header_img").innerHTML = `
     <img src="${USER_DATA.url_foto}" alt="${USER_DATA.nome}" />
-    `
+    `;
     return;
   }
 
-  document.querySelector(".header .header_img").innerHTML = USER_DATA?.nome.split(" ").map(item => item[0]).join("").toUpperCase()
+  document.querySelector(".header .header_img").innerHTML = USER_DATA?.nome
+    .split(" ")
+    .map((item) => item[0])
+    .join("")
+    .toUpperCase();
 }
 
 async function getManyField(field) {
@@ -120,7 +124,7 @@ async function getOneField(field, id) {
 
     return data.data;
   } catch (error) {
-    alert("algo deu errado, verifique a conexao!")
+    alert("algo deu errado, verifique a conexao!");
   }
 }
 
@@ -140,8 +144,8 @@ async function postNewField(field, dataBody) {
     alert("criado com sucesso");
     return data;
   } catch (error) {
-    alert(error)
-    alert("Verifice os dados algo deu errado")
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
 }
 

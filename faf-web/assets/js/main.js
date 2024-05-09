@@ -1,8 +1,9 @@
-const API_BASE_PATH = "http://localhost/php-projects/faf-server";
+const API_BASE_PATH = "https://fluky-additives.000webhostapp.com";
+// const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 let USER_DATA = undefined;
 
 checkIsUserAuth();
-userInfomation()
+userInfomation();
 
 const modalOverlay = document.querySelector(".modal-overlay");
 
@@ -11,7 +12,7 @@ role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid sli
 <title>Placeholder</title>
 <rect width="100%" height="100%" fill="#868e96" />
 </svg>`;
-const IMAGE_COVER_CIRC = `<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>`
+const IMAGE_COVER_CIRC = `<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>`;
 
 document.addEventListener("keydown", (e) => {
   if (e.code === "Escape" && isModalOpen()) {
@@ -20,9 +21,8 @@ document.addEventListener("keydown", (e) => {
 });
 
 function userInfomation() {
-
   if (!document.querySelector("header .user-info")) {
-    return
+    return;
   }
 
   if (USER_DATA?.url_foto) {
@@ -30,15 +30,19 @@ function userInfomation() {
     <div class="header_img">
       <img src="${USER_DATA.url_foto}" alt="${USER_DATA.nome}" />
     </div>
-    `
+    `;
     return;
   }
 
   document.querySelector("header .user-info").innerHTML = `
   <div class="header_img">
-    ${USER_DATA?.nome.split(" ").map(item => item[0]).join("").toUpperCase()}
+    ${USER_DATA?.nome
+      .split(" ")
+      .map((item) => item[0])
+      .join("")
+      .toUpperCase()}
   </div>
-  `
+  `;
 }
 
 async function getManyField(field) {
