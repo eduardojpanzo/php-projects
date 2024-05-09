@@ -1,5 +1,3 @@
 # php-ptojects
-
-some academic projects I did in PHP
-
-and some exercises
+* [faf-admin](./faf-admin/)
+* [faf-web](./faf-web/)
