@@ -128,7 +128,7 @@ async function initialPartidasView() {
 //         </div>
 //     </form>`
 
-//     modalOverlay.querySelector(".modal-content").innerHTML = formTamplete;
+//     document.querySelector(".modal-overlay .modal-content").innerHTML = formTamplete;
 //     openModal();
 // }
 

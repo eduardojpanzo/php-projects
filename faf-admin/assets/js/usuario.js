@@ -27,7 +27,7 @@ async function initialUsuarioView() {
 async function handleDetails(id) {
   const item = await getOneField("usuario", id);
 
-  modalOverlay.querySelector(".modal-content").innerHTML = `
+  document.querySelector(".modal-overlay .modal-content").innerHTML = `
     <div class="card">
         ${item.url_foto ? `<img src="${item.url_foto}" class="card-img-top" alt="${item.nome}"/>` : IMAGE_COVER}
         <div class="card-body">
@@ -84,7 +84,7 @@ async function handleBuildModalForm(id) {
         </div>
     </form>`;
 
-  modalOverlay.querySelector(".modal-content").innerHTML = formTamplete;
+  document.querySelector(".modal-overlay .modal-content").innerHTML = formTamplete;
   openModal();
 }
 

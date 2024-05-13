@@ -9,8 +9,8 @@
 :root {
   --header-height: 3rem;
   --nav-width: 68px;
-  --first-color: #4723d9;
-  --first-color-light: #afa5d9;
+  --first-color: #1a1d22;
+  --first-color-light: #ffa903;
   --white-color: #f7f6fb;
   --body-font: "Nunito", sans-serif;
   --normal-font-size: 1rem;
@@ -110,6 +110,10 @@ img {
   background-color: var(--white-color);
   z-index: var(--z-fixed);
   transition: 0.5s;
+}
+
+.logo-nav {
+  max-width: 22px;
 }
 
 .header_toggle {

@@ -10,7 +10,7 @@ async function initialDashView() {
     document.querySelector("#cadastrados").innerHTML = `
         <div class="feature col">
             <div class="d-flex gap-2 align-items-start">
-                <div class="feature-icon bg-primary bg-gradient">
+                <div class="feature-icon bg-dark bg-gradient">
                     <i class="fas fa-trophy nav_icon"></i> <span class="number-icon">${campeonatos.length}</span>
                 </div>
                 <h2>Campeonatos</h2>
@@ -21,7 +21,7 @@ async function initialDashView() {
         </div>
         <div class="feature col">
             <div class="d-flex gap-2 align-items-start">
-                <div class="feature-icon bg-primary bg-gradient">
+                <div class="feature-icon bg-dark bg-gradient">
                     <i class="fas fa-shield-alt nav_icon"></i> <span class="number-icon">${equipas.length}</span>
                 </div>
                 <h2>Equipas</h2>
@@ -32,7 +32,7 @@ async function initialDashView() {
         </div>
         <div class="feature col">
             <div class="d-flex gap-2 align-items-start">
-                <div class="feature-icon bg-primary bg-gradient">
+                <div class="feature-icon bg-dark bg-gradient">
                     <i class="fas fa-tshirt nav_icon"></i> <span class="number-icon">${jogadores.length}</span>
                 </div>
                 <h2>Jogadores</h2>
@@ -43,7 +43,7 @@ async function initialDashView() {
         </div>
         <div class="feature col">
             <div class="d-flex gap-2 align-items-start">
-                <div class="feature-icon bg-primary bg-gradient">
+                <div class="feature-icon bg-dark bg-gradient">
                     <i class="fas fa-user-tie nav_icon"></i> <span class="number-icon">${tecnicos.length}</span>
                 </div>
                 <h2>Tecnicos</h2>
@@ -54,7 +54,7 @@ async function initialDashView() {
         </div>
         <div class="feature col">
             <div class="d-flex gap-2 align-items-start">
-                <div class="feature-icon bg-primary bg-gradient">
+                <div class="feature-icon bg-dark bg-gradient">
                     <i class="fas fa-map-pin nav_icon"></i> <span class="number-icon">${estadios.length}</span>
                 </div>
                 <h2>Estadios</h2>

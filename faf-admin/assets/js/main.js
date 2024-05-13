@@ -1,5 +1,5 @@
-const API_BASE_PATH = "https://fluky-additives.000webhostapp.com";
-// const API_BASE_PATH = "http://localhost/php-projects/faf-server";
+//const API_BASE_PATH = "https://fluky-additives.000webhostapp.com";
+const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 const modalOverlay = document.querySelector(".modal-overlay");
 let USER_DATA = undefined;
 
@@ -103,14 +103,18 @@ function userInfomation() {
 }
 
 async function getManyField(field) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/buscar`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/buscar`);
+    const data = await response.json();
 
-  if (!data) {
-    return [];
+    if (!data) {
+      return [];
+    }
+
+    return data.data;
+  } catch (error) {
+    alert("algo deu errado, verifique os dados!");
   }
-
-  return data.data;
 }
 
 async function getOneField(field, id) {
@@ -124,7 +128,7 @@ async function getOneField(field, id) {
 
     return data.data;
   } catch (error) {
-    alert("algo deu errado, verifique a conexao!");
+    alert("algo deu errado, verifique os dados!");
   }
 }
 
@@ -150,54 +154,67 @@ async function postNewField(field, dataBody) {
 }
 
 async function login(dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/usuario/entrar`, {
-    method: "POST",
-    body: JSON.stringify(dataBody),
-  });
+  try {
+    const response = await fetch(`${API_BASE_PATH}/usuario/entrar`, {
+      method: "POST",
+      body: JSON.stringify(dataBody),
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+    alert(data.message ?? "Login feito!");
+
+    USER_DATA = data.data;
+    setCookie("AdminUserAuth", JSON.stringify(USER_DATA), 3);
+
+    return USER_DATA;
+  } catch (error) {
+    alert("algo deu errado, verifique os dados!");
   }
-  alert(data.message ?? "Login feito!");
-
-  USER_DATA = data.data;
-  setCookie("AdminUserAuth", JSON.stringify(USER_DATA), 3);
-
-  return USER_DATA;
 }
 
 async function updateField(field, id, dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/atualizar/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(dataBody),
-  });
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/atualizar/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(dataBody),
+    });
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    alert(data.message);
+
+    return data.data;
+  } catch (error) {
+    alert("algo deu errado, verifique os dados!");
   }
-
-  alert(data.message);
-
-  return data.data;
 }
 
 async function deleteField(field, id) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/remove/${id}`, {
-    method: "DELETE",
-  });
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/remove/${id}`, {
+      method: "DELETE",
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    alert(data.message);
+
+    return data.data;
+  } catch (error) {
+    alert("algo deu errado, verifique os dados!");
   }
 
-  alert(data.message);
-
-  return data.data;
 }
 
 async function postUploadFoto(field, formData) {
@@ -217,7 +234,7 @@ async function postUploadFoto(field, formData) {
 
     return data;
   } catch (error) {
-    alert(error);
+    alert("algo deu errado, verifique o nome da imagem e o formato!");
   }
 }
 
@@ -321,7 +338,7 @@ async function handleBuildModalFormUpload(id) {
       </div>
   </form>`;
 
-  modalOverlay.querySelector(".modal-content").innerHTML = formTamplete;
+  document.querySelector(".modal-overlay .modal-content").innerHTML = formTamplete;
   openModal();
 }
 
