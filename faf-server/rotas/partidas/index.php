@@ -40,6 +40,8 @@ function verificarEquipasIds($equipas, $ids){
         include_once "buscar.php";
     }else if ($method == "GET" && $acao == "buscarporequipa") {
         include_once "buscarporequipa.php";
+    }else if ($method == "GET" && $acao == "buscarporcampeonato") {
+        include_once "buscarporcampeonato.php";
     }else if ($method == "PUT" && $acao == "atualizar") {
         include_once "atualizar.php";
     }else if ($method == "DELETE" && $acao == "remove") {

@@ -62,7 +62,7 @@ async function handleBuildModalForm(id) {
   let item;
   const equipas = await getManyField("equipa");
 
-  if (typeof id === "number") {
+  if (typeof id === "number" && id > 0) {
     item = await getOneField("tecnico", id);
   }
   const formTamplete = `
@@ -133,6 +133,15 @@ async function handleBuildModalForm(id) {
 
 async function handleValidation(event) {
   event.preventDefault();
+
+  if (!isFieldOfLetterString("form #nome", event.target.nome.value) || !isFieldOfLetterString("form #tipo", event.target.tipo.value)) {
+    return
+  }
+
+
+  if (!isMaiorDeIdade("form #data_nascimento", event.target.data_nascimento.value)) {
+    return
+  }
 
   if (!event.target.checkValidity()) {
     event.target.classList.add("was-validated");

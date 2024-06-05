@@ -47,7 +47,7 @@ async function handleDetails(id) {
 async function handleBuildModalForm(id) {
   let item;
 
-  if (typeof id === "number") {
+  if (typeof id === "number" && id > 0) {
     item = await getOneField("responsavel", id);
   }
   const formTamplete = `
@@ -92,6 +92,14 @@ async function handleBuildModalForm(id) {
 
 async function handleValidation(event) {
   event.preventDefault();
+
+  if (!isFieldOfLetterString("form #nome", event.target.nome.value)) {
+    return
+  }
+
+  if (!isMaiorDeIdade("form #data_nascimento", event.target.data_nascimento.value)) {
+    return
+  }
 
   if (!event.target.checkValidity()) {
     event.target.classList.add("was-validated");

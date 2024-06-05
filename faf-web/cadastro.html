@@ -1,14 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="shortcut icon" href="./assets/image/logo.png" type="image/x-icon">
 </head>
 
 <body>
 
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h4 class="fw-bold text-center mb-3">Cadastro de novo usuario</h4>
+                <div class="card p-3 ">
+                    <form id="registrationForm" class="row g-2 needs-validation" novalidate
+                        onsubmit="handleValidation(event)">
+                        <div class="col-md-6">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                            <span class="invalid-feedback">Por favor, insira o nome.</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" required>
+                            <span class="invalid-feedback">Por favor, insira o senha.</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="confirm_senha" class="form-label">Confirmar senha</label>
+                            <input type="password" class="form-control" id="confirm_senha" name="confirm_senha"
+                                required>
+                            <span class="invalid-feedback">Por favor, insira o confirm_senha.</span>
+                        </div>
+
+
+                        <div class="col-12 text-center mt-4 ">
+                            <button type="submit" class="btn btn-dark">Realizar o Cadastro</button>
+                        </div>
+                    </form>
+                </div>
+
+                <p class="text-center mt-4 ">Tem uma conta?
+                    <a href="./login.html">faça login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (opcional, apenas se for usar JavaScript) -->
+    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/dist/js/jquery.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/usuario.js"></script>
 </body>
 
 </html>

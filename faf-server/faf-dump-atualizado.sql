@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2024 at 10:35 PM
+-- Generation Time: May 26, 2024 at 05:04 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -21,8 +21,19 @@ SET time_zone = "+00:00";
 -- Database: `faf`
 --
 
+-- --------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS `faf` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `faf`;
+--
+-- Table structure for table `agente`
+--
+
+CREATE TABLE `agente` (
+  `id_agente` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `empresa` varchar(100) DEFAULT NULL,
+  `id_foto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -40,16 +51,20 @@ CREATE TABLE `campeonato` (
   `id_foto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `campeonato`
+-- Table structure for table `contrato`
 --
 
-INSERT INTO `campeonato` (`id_campeonato`, `nome`, `data_inicio`, `data_fim`, `descricao`, `valor_pagar`, `id_foto`) VALUES
-(1, 'Esperança', '2024-02-29', '2024-06-10', 'capeonato para dar esperança', 19500.50, 16),
-(2, 'Infantil', '2024-03-29', '2024-05-10', 'capeonato para crinças', 5000.50, NULL),
-(3, 'Teste avançado', '2024-02-29', '2024-03-07', 'alguma coisa', 20000.00, NULL),
-(6, 'Amadores', '2024-03-14', '2024-03-31', 'alguma coisa', 300000.00, NULL),
-(7, 'Teste melhor', '2024-03-14', '2024-03-20', 'alguma descrição', 1000.00, NULL);
+CREATE TABLE `contrato` (
+  `id_contrato` int(11) NOT NULL,
+  `id_jogador` int(11) DEFAULT NULL,
+  `id_equipa` int(11) DEFAULT NULL,
+  `data_inicio` date NOT NULL,
+  `data_fim` date NOT NULL,
+  `salario` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -67,15 +82,6 @@ CREATE TABLE `equipa` (
   `id_estadio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `equipa`
---
-
-INSERT INTO `equipa` (`id_equipa`, `nome`, `descricao`, `data_fundacao`, `id_foto`, `id_responsavel`, `id_estadio`) VALUES
-(1, 'Ultimate X', 'equipa junior Masculina J', '2024-03-28', 11, 1, 1),
-(2, 'Vencedor Ultra', 'equipa junior Masculina', '0000-00-00', 15, NULL, NULL),
-(3, 'SP sport', 'alguma descricao', '2020-06-08', 8, 1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -89,15 +95,6 @@ CREATE TABLE `estadio` (
   `capacidade` mediumint(8) UNSIGNED NOT NULL,
   `id_foto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `estadio`
---
-
-INSERT INTO `estadio` (`id_estadio`, `nome`, `localizacao`, `capacidade`, `id_foto`) VALUES
-(1, 'estadio 11 ruas', 'viana-mama-gorda', 400, NULL),
-(2, 'Mil Asas', 'Boa esperança, Cacuaco', 500, NULL),
-(3, 'esquina', 'Murro Bento', 2010, 12);
 
 -- --------------------------------------------------------
 
@@ -113,26 +110,6 @@ CREATE TABLE `fotos` (
   `data_upload` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `fotos`
---
-
-INSERT INTO `fotos` (`id_foto`, `nome_arquivo`, `tipo`, `tamanho_arquivo`, `data_upload`) VALUES
-(3, 'pessoa.jpg', 'jpg', 511273, '2024-03-21 08:58:43'),
-(4, 'perido.PNG', 'PNG', 5524, '2024-04-08 00:28:07'),
-(5, 'pessoa.jpg', 'jpg', 511273, '2024-04-08 00:39:39'),
-(6, 'perido.PNG', 'PNG', 5524, '2024-04-08 01:15:32'),
-(7, 'campeonato.PNG', 'PNG', 3001, '2024-04-08 01:18:12'),
-(8, 'perido.PNG', 'PNG', 5524, '2024-04-09 04:47:06'),
-(9, 'treinador.jpg', 'jpg', 4878136, '2024-04-18 21:25:32'),
-(10, 'pedro.jpg', 'jpg', 511273, '2024-04-18 21:41:47'),
-(11, 'equipa2.jpg', 'jpg', 54308, '2024-04-18 21:50:25'),
-(12, 'equipa2.jpg', 'jpg', 54308, '2024-04-18 21:56:28'),
-(13, 'respo.jpg', 'jpg', 1353798, '2024-04-18 22:02:00'),
-(14, 'jogador.jpg', 'jpg', 3805395, '2024-04-18 22:27:38'),
-(15, 'equipa.jpg', 'jpg', 2380168, '2024-04-18 22:33:04'),
-(16, 'equipa2.jpg', 'jpg', 54308, '2024-04-18 22:34:57');
-
 -- --------------------------------------------------------
 
 --
@@ -145,16 +122,6 @@ CREATE TABLE `inscricao` (
   `id_equipa` int(11) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `inscricao`
---
-
-INSERT INTO `inscricao` (`id_inscricao`, `id_campeonato`, `id_equipa`, `estado`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1),
-(4, 3, 1, 1),
-(5, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -169,18 +136,10 @@ CREATE TABLE `jogador` (
   `posicao` varchar(30) NOT NULL,
   `data_nascimento` date NOT NULL,
   `sexo` enum('M','F') NOT NULL,
-  `id_equipa` int(11) DEFAULT NULL,
-  `id_foto` int(11) DEFAULT NULL
+  `id_foto` int(11) DEFAULT NULL,
+  `id_agente` int(11) DEFAULT NULL,
+  `nacionalidade` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `jogador`
---
-
-INSERT INTO `jogador` (`id_jogador`, `nome`, `numero`, `posicao`, `data_nascimento`, `sexo`, `id_equipa`, `id_foto`) VALUES
-(4, 'Motinho', 4, 'defesa', '2001-10-01', 'M', NULL, 14),
-(5, 'J Pedro', 4, 'Defesa', '1998-05-25', 'M', NULL, NULL),
-(6, 'Junior', 1, 'guarda redes', '1992-02-03', 'M', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -199,14 +158,6 @@ CREATE TABLE `partidas` (
   `id_equipa_fora` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `partidas`
---
-
-INSERT INTO `partidas` (`id_partida`, `data`, `hora_fim`, `hora_inicio`, `estado`, `id_campeonato`, `id_equipa_casa`, `id_equipa_fora`) VALUES
-(4, '2024-03-15', '16:54:23', '15:54:23', 0, 1, 1, 2),
-(5, '2024-05-15', '16:54:23', '15:54:23', 0, 1, 1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -220,14 +171,6 @@ CREATE TABLE `responsavel` (
   `sexo` enum('M','F') NOT NULL,
   `id_foto` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `responsavel`
---
-
-INSERT INTO `responsavel` (`id_responsavel`, `nome`, `data_nascimento`, `sexo`, `id_foto`) VALUES
-(1, 'Eduardo Mario', '1978-03-29', 'M', 13),
-(2, 'Jose Figueredo', '1995-03-21', 'M', NULL);
 
 -- --------------------------------------------------------
 
@@ -259,14 +202,6 @@ CREATE TABLE `tecnico` (
   `id_equipa` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `tecnico`
---
-
-INSERT INTO `tecnico` (`id_tecnico`, `nome`, `experiencia`, `tipo`, `data_nascimento`, `sexo`, `id_foto`, `id_equipa`) VALUES
-(1, 'Celco Lopes', 4, 'Preparador Físico', '1995-04-12', 'M', 9, 2),
-(2, 'Jose Amario', 6, 'Preparador Físico', '2024-04-18', 'M', NULL, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -286,26 +221,41 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nome`, `tipo`, `senha`, `id_foto`) VALUES
-(1, 'Eduardo', 'admin', '$2y$10$B8Hdi7TordfRJP3embhPj.K66fe./Fjmo.FBzw7PLKh079GLNtX8.', 3),
-(11, 'Miguel Pedro', 'admin', '1234', NULL),
-(12, 'Figueredo JP', 'admin', '1234', 10);
+(1, 'admin', 'admin', '$2y$10$B8Hdi7TordfRJP3embhPj.K66fe./Fjmo.FBzw7PLKh079GLNtX8.', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `agente`
+--
+ALTER TABLE `agente`
+  ADD PRIMARY KEY (`id_agente`),
+  ADD KEY `fk_agente_foto` (`id_foto`);
+
+--
 -- Indexes for table `campeonato`
 --
 ALTER TABLE `campeonato`
   ADD PRIMARY KEY (`id_campeonato`),
+  ADD UNIQUE KEY `nome` (`nome`),
   ADD KEY `fk_campeonato_foto` (`id_foto`);
+
+--
+-- Indexes for table `contrato`
+--
+ALTER TABLE `contrato`
+  ADD PRIMARY KEY (`id_contrato`),
+  ADD KEY `contrato_jogador` (`id_jogador`),
+  ADD KEY `contrato_equipa` (`id_equipa`);
 
 --
 -- Indexes for table `equipa`
 --
 ALTER TABLE `equipa`
   ADD PRIMARY KEY (`id_equipa`),
+  ADD UNIQUE KEY `nome` (`nome`),
   ADD KEY `fk_equipa_foto` (`id_foto`),
   ADD KEY `fk_equipa_estadio` (`id_estadio`),
   ADD KEY `fk_equipa_responsavel` (`id_responsavel`);
@@ -315,6 +265,7 @@ ALTER TABLE `equipa`
 --
 ALTER TABLE `estadio`
   ADD PRIMARY KEY (`id_estadio`),
+  ADD UNIQUE KEY `nome` (`nome`),
   ADD KEY `fk_estadio_foto` (`id_foto`);
 
 --
@@ -336,8 +287,8 @@ ALTER TABLE `inscricao`
 --
 ALTER TABLE `jogador`
   ADD PRIMARY KEY (`id_jogador`),
-  ADD KEY `fk_jogador_equipa` (`id_equipa`),
-  ADD KEY `fk_jodador_foto` (`id_foto`);
+  ADD KEY `fk_jodador_foto` (`id_foto`),
+  ADD KEY `fk_jogador_agente` (`id_agente`);
 
 --
 -- Indexes for table `partidas`
@@ -383,58 +334,70 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT for table `agente`
+--
+ALTER TABLE `agente`
+  MODIFY `id_agente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `campeonato`
 --
 ALTER TABLE `campeonato`
-  MODIFY `id_campeonato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_campeonato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `contrato`
+--
+ALTER TABLE `contrato`
+  MODIFY `id_contrato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `equipa`
 --
 ALTER TABLE `equipa`
-  MODIFY `id_equipa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_equipa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `estadio`
 --
 ALTER TABLE `estadio`
-  MODIFY `id_estadio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_estadio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fotos`
 --
 ALTER TABLE `fotos`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `inscricao`
 --
 ALTER TABLE `inscricao`
-  MODIFY `id_inscricao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_inscricao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `jogador`
 --
 ALTER TABLE `jogador`
-  MODIFY `id_jogador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jogador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `partidas`
 --
 ALTER TABLE `partidas`
-  MODIFY `id_partida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_partida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `responsavel`
 --
 ALTER TABLE `responsavel`
-  MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_responsavel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `resultados`
 --
 ALTER TABLE `resultados`
-  MODIFY `id_resultados` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_resultados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tecnico`
@@ -446,17 +409,30 @@ ALTER TABLE `tecnico`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `agente`
+--
+ALTER TABLE `agente`
+  ADD CONSTRAINT `fk_agente_foto` FOREIGN KEY (`id_foto`) REFERENCES `fotos` (`id_foto`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
 -- Constraints for table `campeonato`
 --
 ALTER TABLE `campeonato`
   ADD CONSTRAINT `fk_campeonato_foto` FOREIGN KEY (`id_foto`) REFERENCES `fotos` (`id_foto`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `contrato`
+--
+ALTER TABLE `contrato`
+  ADD CONSTRAINT `contrato_equipa` FOREIGN KEY (`id_equipa`) REFERENCES `equipa` (`id_equipa`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `contrato_jogador` FOREIGN KEY (`id_jogador`) REFERENCES `jogador` (`id_jogador`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `equipa`
@@ -484,7 +460,7 @@ ALTER TABLE `inscricao`
 --
 ALTER TABLE `jogador`
   ADD CONSTRAINT `fk_jodador_foto` FOREIGN KEY (`id_foto`) REFERENCES `fotos` (`id_foto`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_jogador_equipa` FOREIGN KEY (`id_equipa`) REFERENCES `equipa` (`id_equipa`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_jogador_agente` FOREIGN KEY (`id_agente`) REFERENCES `agente` (`id_agente`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `partidas`

@@ -61,7 +61,7 @@ async function handleBuildModalForm(id) {
   let item;
   const responsaveis = await getManyField("responsavel");
   const estadios = await getManyField("estadio");
-  if (typeof id === "number") {
+  if (typeof id === "number" && id > 0) {
     item = await getOneField("equipa", id);
   }
   const formTamplete = `
@@ -97,7 +97,7 @@ async function handleBuildModalForm(id) {
         </div>
 
         <div class="col-md-6">
-            <label for="id_estadio" class="form-label">Equipa</label>
+            <label for="id_estadio" class="form-label">Estádio</label>
             <select class="form-select" id="id_estadio" required>
                 <option selected disabled value="">Escolher...</option>
                 ${estadios
@@ -128,6 +128,10 @@ async function handleBuildModalForm(id) {
 
 async function handleValidation(event) {
   event.preventDefault();
+
+  if (!isFieldOfLetterString("form #nome", event.target.nome.value)) {
+    return
+  }
 
   if (!event.target.checkValidity()) {
     event.target.classList.add("was-validated");

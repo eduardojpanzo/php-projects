@@ -40,7 +40,7 @@ async function handleDetails(id) {
 
 async function handleBuildModalForm(id) {
   let item;
-  if (typeof id === "number") {
+  if (typeof id === "number" && id > 0) {
     item = await getOneField("usuario", id);
   }
   const formTamplete = `
@@ -93,10 +93,15 @@ async function handleValidation(event) {
   const senha = document.getElementById("senha").value;
   const confirm_senha = document.getElementById("confirm_senha").value;
 
+  if (!isFieldOfLetterString("form #nome", event.target.nome.value)) {
+    return
+  }
+
   if (!event.target.checkValidity()) {
     event.target.classList.add("was-validated");
     return;
   }
+
 
   if (senha !== confirm_senha) {
     document.getElementById("confirm_senha").classList.add("is-invalid");

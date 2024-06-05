@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
+//banco de dados
 include_once "classes/db.class.php";
 
 //rotas

@@ -6,7 +6,7 @@ initialCampeonatoView()
 
 async function initialCampeonatoView() {
     const campeonato = await getOneField("campeonato", idValue);
-    const partidas = await getManyFieldByParamAndID("partidas", "buscar", idValue)
+    const partidas = await getManyFieldByParamAndID("partidas", "buscarporcampeonato", idValue)
     const equipas = campeonato.equipas
 
     document.querySelector(".card-principal .card_image").innerHTML = `${campeonato.url_foto ? `<img src="${campeonato.url_foto}" class="card-img-top image-cover" alt="${campeonato.nome_campeonato}"/>` : IMAGE_COVER}`

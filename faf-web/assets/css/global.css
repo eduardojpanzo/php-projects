@@ -125,6 +125,7 @@ a.link-card {
   background-color: gray;
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .header_img img {

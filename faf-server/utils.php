@@ -145,4 +145,14 @@ function executeSql($sql){
 
     return $result;
 }
+
+function hasActiveContract($contracts) {
+    $today = date('Y-m-d'); 
+    foreach ($contracts as $contract) {
+        if ($contract['data_fim'] > $today) {
+            return true;
+        }
+    }
+    return false; 
+}
  ?>

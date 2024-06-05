@@ -79,7 +79,7 @@ function checkIsUserAuth() {
 function isAdmin(tipo) {
   if (tipo !== "admin") {
     alert("Não tens permisão suficiente, não és Admin! ");
-    document.location.href = "./login.html";
+    document.location.href = "./logout.html";
   }
 }
 
@@ -132,6 +132,17 @@ async function getOneField(field, id) {
   }
 }
 
+async function getManyFieldByParamAndID(field, param, id) {
+  const response = await fetch(`${API_BASE_PATH}/${field}/${param}/${id}`);
+  const data = await response.json();
+
+  if (!data) {
+    return [];
+  }
+
+  return data.data;
+}
+
 async function postNewField(field, dataBody) {
   try {
     const response = await fetch(`${API_BASE_PATH}/${field}/criar`, {
@@ -145,7 +156,7 @@ async function postNewField(field, dataBody) {
       return {};
     }
 
-    alert("criado com sucesso");
+    alert(data.message);
     return data;
   } catch (error) {
     alert(error);
@@ -340,6 +351,63 @@ async function handleBuildModalFormUpload(id) {
 
   document.querySelector(".modal-overlay .modal-content").innerHTML = formTamplete;
   openModal();
+}
+
+function isFieldOfLetterString(fieldSelector, value) {
+  const regex = /^[A-Za-z\s]+$/;
+
+  if (!regex.test(value)) {
+    document.querySelector(`${fieldSelector}`).classList.add("is-invalid");
+    document.querySelector(`${fieldSelector}`).nextElementSibling.innerHTML = "Campo inválido, apenas letras e espaços são permitidos";
+    return false;
+  }
+
+  document.querySelector(`${fieldSelector}`).classList.remove("is-invalid");
+  document.querySelector(`${fieldSelector}`).nextElementSibling.innerHTML = "";
+  return true;
+}
+
+function isMaiorDeIdade(fieldSelector, date) {
+  const idade = getIdade(date)
+
+  if (idade < 18) {
+    document.querySelector(`${fieldSelector}`).classList.add("is-invalid");
+    document.querySelector(`${fieldSelector}`).nextElementSibling.innerHTML = `Deve ser maior de Idade`;
+    return false;
+  }
+
+  document.querySelector(`${fieldSelector}`).classList.remove("is-invalid");
+  document.querySelector(`${fieldSelector}`).nextElementSibling.innerHTML = "";
+  return true;
+}
+
+function getIdade(data) {
+  const hoje = new Date();
+  const nascimento = new Date(data);
+  const ano = hoje.getFullYear() - nascimento.getFullYear();
+
+  const mes = hoje.getMonth() - nascimento.getMonth();
+  const dia = hoje.getDate() - nascimento.getDate();
+
+  if (mes < 0 || (mes === 0 && dia < 0)) {
+    return ano - 1;
+  }
+
+  return ano;
+}
+
+function calcularDiferencaEmDias(data1, data2) {
+  const UM_DIA = 1000 * 60 * 60 * 24;
+
+  const diferencaMs = Math.abs(data1 - data2);
+  return Math.round(diferencaMs / UM_DIA);
+}
+
+function isDateGreaterThanToday(date) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return date > today;
 }
 
 async function handleValidationUpload(event) {

@@ -7,7 +7,7 @@
   <title>Admin | Partidas</title>
   <script src="./assets/js/main.js" async></script>
   <link rel="stylesheet" href="./assets/css/global.css" />
-  <link rel="shortcut icon" href="./assets//image/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets//image/logo.png" type="image/x-icon" />
 </head>
 
 <body id="body-pd">
@@ -43,9 +43,23 @@
           </li>
 
           <li>
+            <a href="./jogador.html" class="nav_link">
+              <i class="fas fa-tshirt nav_icon"></i>
+              <span class="nav_name">Jogadores</span>
+            </a>
+          </li>
+
+          <li>
             <a href="./inscricao.html" class="nav_link">
               <i class="fas fa-money-check-alt nav_icon"></i>
               <span class="nav_name">Inscrições</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="./contrato.html" class="nav_link">
+              <i class="fas fa-money-check nav_icon"></i>
+              <span class="nav_name">Contratos</span>
             </a>
           </li>
 
@@ -57,16 +71,16 @@
           </li>
 
           <li>
-            <a href="./jogador.html" class="nav_link">
-              <i class="fas fa-tshirt nav_icon"></i>
-              <span class="nav_name">Jogadores</span>
+            <a href="./tecnico.html" class="nav_link">
+              <i class="fas fa-user-shield nav_icon"></i>
+              <span class="nav_name">Técnicos</span>
             </a>
           </li>
 
           <li>
-            <a href="./tecnico.html" class="nav_link">
-              <i class="fas fa-user-tie nav_icon"></i>
-              <span class="nav_name">Técnico</span>
+            <a href="./agente.html" class="nav_link">
+              <i class="fas fa-user-secret nav_icon"></i>
+              <span class="nav_name">Agentes</span>
             </a>
           </li>
 
@@ -101,18 +115,18 @@
   </aside>
 
   <!--Container Main start-->
-  <main class="height-100 bg-light p-2 ">
-    <div class="d-flex  justify-content-between ">
+  <main class="height-100 bg-light p-2">
+    <div class="d-flex justify-content-between">
       <div>
         <h4 class="fw-bold text-xxl-start">Partidas</h4>
         <p>Criação e conclusão de partidas</p>
       </div>
 
-      <button onclick="handleBuildModalForm('')" type="button"
-        class="btn btn-outline-dark align-self-center ">Nova</button>
+      <button onclick="handleBuildModalForm('')" type="button" class="btn btn-outline-dark align-self-center">
+        Nova
+      </button>
     </div>
-    <div class="filter-section">
-    </div>
+    <div class="filter-section"></div>
     <table class="table overflow-auto">
       <thead>
         <tr>
@@ -123,16 +137,12 @@
           <th scope="col">Hora ínicio</th>
           <th scope="col">Hora fim</th>
           <th scope="col">Estado do jogo</th>
-          <th scope="col">Golo de Casa</th>
-          <th scope="col">Golo de Fora</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
 
-      <tbody class="view_tbody">
-      </tbody>
+      <tbody class="view_tbody"></tbody>
     </table>
-
 
     <div class="modal-overlay">
       <div class="modal-close" onclick="closeModal()">
@@ -140,7 +150,6 @@
       </div>
       <div class="modal-content"></div>
     </div>
-
   </main>
   <!--Container Main end-->
 

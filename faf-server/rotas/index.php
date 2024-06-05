@@ -21,6 +21,10 @@
 		include_once "tecnico/index.php";
 	}else if ($rota == "usuario") {
 		include_once "usuario/index.php";
+	}else if ($rota == "agente") {
+		include_once "agente/index.php";
+	}else if ($rota == "contrato") {
+		include_once "contrato/index.php";
 	}else{
 		$responseData =  notFound();
 	}

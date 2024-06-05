@@ -1,5 +1,5 @@
-const API_BASE_PATH = "https://fluky-additives.000webhostapp.com";
-// const API_BASE_PATH = "http://localhost/php-projects/faf-server";
+//const API_BASE_PATH = "https://fluky-additives.000webhostapp.com";
+const API_BASE_PATH = "http://localhost/php-projects/faf-server";
 let USER_DATA = undefined;
 
 checkIsUserAuth();
@@ -27,104 +27,144 @@ function userInfomation() {
 
   if (USER_DATA?.url_foto) {
     document.querySelector("header .user-info").innerHTML = `
-    <div class="header_img">
-      <img src="${USER_DATA.url_foto}" alt="${USER_DATA.nome}" />
+    <div class="dropdown">
+      <div class="header_img" data-bs-toggle="dropdown" id="dropdownMenuButtonSM" aria-expanded="false">
+        <img src="${USER_DATA.url_foto}" alt="${USER_DATA.nome}" />
+      </div>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSM">
+        <li><a class="dropdown-item" href="./logout.html">Sair</a></li>
+      </ul>
     </div>
     `;
     return;
   }
 
   document.querySelector("header .user-info").innerHTML = `
-  <div class="header_img">
-    ${USER_DATA?.nome
+    <div class="dropdown">
+      <div class="header_img" data-bs-toggle="dropdown" id="dropdownMenuButtonSM" aria-expanded="false">
+        ${USER_DATA?.nome
       .split(" ")
       .map((item) => item[0])
       .join("")
       .toUpperCase()}
-  </div>
+      </div>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSM">
+        <li><a class="dropdown-item" href="./logout.html">Sair</a></li>
+      </ul>
+    </div>
   `;
 }
 
 async function getManyField(field) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/buscar`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/buscar`);
+    const data = await response.json();
 
-  if (!data) {
-    return [];
+    if (!data) {
+      return [];
+    }
+
+    return data.data;
+  } catch (error) {
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
-
-  return data.data;
 }
 
 async function getOneField(field, id) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/buscar/${id}`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/buscar/${id}`);
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    return data.data;
+  } catch (error) {
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
-
-  return data.data;
 }
 
 async function getManyFieldByParamAndID(field, param, id) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/${param}/${id}`);
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/${param}/${id}`);
+    const data = await response.json();
 
-  if (!data) {
-    return [];
+    if (!data) {
+      return [];
+    }
+
+    return data.data;
+  } catch (error) {
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
-
-  return data.data;
 }
 
 async function postNewField(field, dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/criar`, {
-    method: "POST",
-    body: JSON.stringify(dataBody),
-  });
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/criar`, {
+      method: "POST",
+      body: JSON.stringify(dataBody),
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    alert(data.message ?? "criado com sucesso");
+
+    return data;
+  } catch (error) {
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
-
-  alert(data.message ?? "criado com sucesso");
-
-  return data;
 }
 
 async function updateField(field, id, dataBody) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/atualizar/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(dataBody),
-  });
-  const data = await response.json();
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/atualizar/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(dataBody),
+    });
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    alert(data.message);
+
+    return data.data;
+  } catch (error) {
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
-
-  alert(data.message);
-
-  return data.data;
 }
 
 async function deleteField(field, id) {
-  const response = await fetch(`${API_BASE_PATH}/${field}/remove/${id}`, {
-    method: "DELETE",
-  });
+  try {
+    const response = await fetch(`${API_BASE_PATH}/${field}/remove/${id}`, {
+      method: "DELETE",
+    });
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (!data) {
-    return {};
+    if (!data) {
+      return {};
+    }
+
+    alert(data.message);
+
+    return data.data;
+  } catch (error) {
+    alert(error);
+    alert("Verifice os dados algo deu errado");
   }
-
-  alert(data.message);
-
-  return data.data;
 }
 
 function formatarDataTexto(value) {
@@ -181,6 +221,7 @@ function checkIsUserAuth() {
   if (
     !isAuth &&
     !document.location.pathname.split("/").includes("login.html")
+    && !document.location.pathname.split("/").includes("cadastro.html")
   ) {
     alert("Faça o login para poder ter acesso! ");
     document.location.href = "./login.html";
@@ -241,4 +282,18 @@ function getUserData() {
   } else {
     return null;
   }
+}
+
+function isFieldOfLetterString(fieldSelector, value) {
+  const regex = /^[A-Za-z\s]+$/;
+
+  if (!regex.test(value)) {
+    document.querySelector(`${fieldSelector}`).classList.add("is-invalid");
+    document.querySelector(`${fieldSelector}`).nextElementSibling.innerHTML = "Campo inválido, apenas letras e espaços são permitidos";
+    return false;
+  }
+
+  document.querySelector(`${fieldSelector}`).classList.remove("is-invalid");
+  document.querySelector(`${fieldSelector}`).nextElementSibling.innerHTML = "";
+  return true;
 }
